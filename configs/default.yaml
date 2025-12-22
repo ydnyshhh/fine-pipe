@@ -1,0 +1,51 @@
+url_filter:
+  enabled: true
+
+fetch:
+  enabled: true
+  max_concurrency: 40
+  max_retries: 3
+
+extract:
+  enabled: true
+  primary: trafilatura
+  fallback: readability
+  min_extracted_chars: 200
+
+language:
+  enabled: true
+  detector: pycld3
+  target_langs: ["en"]
+  min_confidence: 0.8
+  min_chars: 200
+
+gopher:
+  enabled: true
+  min_words: 80
+  max_words: 20000
+  max_symbol_ratio: 0.2
+  max_digit_ratio: 0.25
+  repetition_threshold: 0.35
+
+dedup:
+  enabled: true
+  exact_dedup: true
+  minhash: true
+  shingle_size: 5
+  num_perm: 128
+  jaccard_threshold: 0.85
+  keep_policy: highest_quality
+
+c4:
+  enabled: true
+  min_sentences: 3
+
+pii:
+  enabled: true
+  mode: redact
+  drop_if_pii_matches_gte: 3
+
+output:
+  format: parquet
+  shard_size: 50000
+  write_stats: true
