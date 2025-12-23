@@ -6,6 +6,8 @@ from dataclasses import asdict
 from pathlib import Path
 from typing import Optional
 
+from typing import Any
+
 import typer
 from rich.console import Console
 from rich.traceback import install as install_rich_traceback
@@ -75,12 +77,12 @@ def _print_run_banner(config: Path, out_dir: Path, n_urls: int, dry_run: bool) -
     if dry_run:
         console.print("[yellow]Dry-run enabled: pipeline will NOT fetch/process pages.[/yellow]")
 
-def _write_json(path: Path, obj: object) -> None:
-    """
-    Simple utility for writing JSON outputs (stats, summaries).
-    """
+def _write_json(path: Path, obj: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(obj, indent=2, ensure_ascii=False), encoding="utf-8")
+    path.write_text(
+        json.dumps(obj, indent=2, ensure_ascii=False, default=str),
+        encoding="utf-8",
+    )
 
 # Commands
 

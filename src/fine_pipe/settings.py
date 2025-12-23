@@ -57,7 +57,7 @@ class LanguageConfig(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     enabled: bool = True
-    detector: Literal["pycld3", "fasttext"] = "pycld3"
+    detector: Literal["fast_langdetect", "fasttext", "pycld3"] = "fast_langdetect"
     target_langs: list[str] = Field(default_factory=lambda: ["en"])
     min_confidence: float = 0.80
     min_chars: int = 200

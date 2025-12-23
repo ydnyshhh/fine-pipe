@@ -14,7 +14,7 @@ extract:
 
 language:
   enabled: true
-  detector: pycld3
+  detector: fast_langdetect
   target_langs: ["en"]
   min_confidence: 0.8
   min_chars: 200
