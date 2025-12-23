@@ -166,7 +166,7 @@ async def _fetch_one(
     doc.meta["domain"] = _url_domain(url)
 
     async with sem:
-        # simple retry loop (you can swap to tenacity later)
+        # simple retry loop
         last_err: Optional[str] = None
         for attempt in range(cfg.max_retries + 1):
             try:
