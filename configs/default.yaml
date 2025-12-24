@@ -1,4 +1,8 @@
 url_filter:
+  drop_extensions: [".jpg",".jpeg",".png",".gif",".webp",".svg",".mp4",".mov",".avi",".zip",".tar",".gz",".7z"]
+
+fetch:
+  accept_content_types: ["text/html", "text/plain", "application/pdf"]
   enabled: true
 
 fetch:
